@@ -1,38 +1,285 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App{
+    display: flex;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.sidebar{
+  position: fixed;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    height: 98vh;
+    width: 78px;
+    background: #11101d;
+    border-radius: 10px;
+    padding: 6px 14px;
+    transition: all 0.5s ease;
+    z-index: 99;
+}
+.sidebar-open{
+    width: 250px;
+}
+.logo_btn{
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.logo_btn .icon{
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+.logo_btn .logo{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+.sidebar-open .logo_btn .icon,
+.sidebar-open .logo_btn .logo{
+    opacity: 1;
+}
+.sidebar .logo_btn #menu-btn{
+    position: absolute;
+    /* position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%); */
+    font-size: 22px;
+    transition: all 0.4s ease;
+    font-size: 23px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
   }
+.sidebar-open .logo_btn #menu-btn{
+    position: relative;
+    text-align: right;
 }
+.sidebar i{
+    color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar .menu-items{
+    margin-top: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar li{
+    position: relative;
+    margin:  8px 0;
+    list-style: none;
+}
+.sidebar li .tooltip{
+    position: absolute;
+    top: -20px;
+    left: calc(100% + 15px);
+    z-index: 3;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 400;
+    opacity: 0;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: 0s;
+  }
+  .sidebar li:hover .tooltip{
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.4s ease;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .sidebar-open li .tooltip{
+    display: none;
+  }
+  .sidebar a{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 12px;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    background: none;
+  }
+  .sidebar li a:hover{
+    background: #FFF;
+  }
+  .menu-item-name{
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+  }
+  .sidebar-open .menu-item-name{
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .sidebar li a:hover .menu-item-name,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color: #11101d;
+}
+.sidebar li i{
+    height: 50px;
+    line-height: 50px;
+    font-size: 18px;
+    border-radius: 12px;
+  }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  .current-link a, .current-link i, .current-link .menu-item-name{
+    background: #fff !important;
+    transition: all 0.5s ease !important;
+    color: #11101D !important;
+}
+  .container{
+    position: relative;
+    background: #E4E9F7;
+    min-height: 100vh;
+    left: 100px;
+    width: calc(100% - 100px);
+    transition: all 0.5s ease;
+  }
+  .sidebar-open ~ .container{
+    left: 270px;
+    width: calc(100% - 270px);
+  }
+  .maincontent{
+    height: calc(100vh - 78px);
+    overflow: auto;
+  }
+  .topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background: transparent;
+    height: 78px;
+}
+.content-name{
+    font-size: 30px;
+    font-weight: 600;
+    color: #11101D;
+}
+.usericon{
+    height: 50px;
+    width: 50px;
+    background: #11101D;
+    border-radius: 50%;
+}
+.userdetail{
   display: flex;
   flex-direction: column;
+  overflow: auto;
+}
+.options{
+  display: flex;
+  padding: 0 1rem;
+  justify-content: flex-end;
+}
+.options button{
+  margin: 10px;
+  padding: 5px;
+}
+.personaldetail{
+  padding: 1rem 2rem;
+}
+.row{
+  display: flex;
+  margin: 1rem;
+}
+.userpic{
+  width: 150px;
+  height: 150px;
+  background: #11101D;
+}
+.generaldetails{
+  margin: 1rem;
+}
+.detailcontainer{
+  margin: 1rem 0;
+  display: flex;
+  background: whitesmoke;
+  border-radius: 10px;
+  height: 300px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-evenly;
+}
+.detailcontainer .column{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-evenly;
+  padding: 1rem 1rem;
+}
+label{
+  color: rgb(94, 94, 94);
+}
+p{
+  font-weight: 500;
+}
+.qualificationcontainer{
+  margin: 1rem 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background: whitesmoke;
+  border-radius: 10px;
+  height: 250px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.qualifications{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.PEDcontainer{
+  margin: 1rem 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background: whitesmoke;
+  border-radius: 10px;
+  height: 250px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.experience{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.field{
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  margin: 0 10px;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  @media (max-width: 420px) {
+    .sidebar li .tooltip{
+      display: none;
+    }
   }
-  to {
-    transform: rotate(360deg);
-  }
-}

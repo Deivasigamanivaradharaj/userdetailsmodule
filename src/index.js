@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { SidebarContextProvider } from './Context/SidebarContext';
+import { AuthContextProvider } from './Context/AuthContext';
+import { TopbarContextProvider } from './Context/TopbarContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <TopbarContextProvider>
+  <AuthContextProvider>
+    <SidebarContextProvider>
     <App />
-  </React.StrictMode>
+  </SidebarContextProvider>
+  </AuthContextProvider>
+  </TopbarContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
